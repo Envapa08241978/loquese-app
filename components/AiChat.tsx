@@ -44,7 +44,7 @@ export default function AiChat({ userId, isOpen, onClose }: AiChatProps) {
       const contextData = conocimientos
         .map(
           (c: Conocimiento) =>
-            `[${c.habilidad}] ${c.snippet_conocimiento} (Contexto: ${c.contexto_uso})`
+            `[${c.habilidad}] ${c.snippet_conocimiento} (Contexto: ${c.contexto_uso}) - [Adjunto/Enlace: ${c.multimedia_ref || 'Ninguno'}]`
         )
         .join('\n');
 

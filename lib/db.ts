@@ -11,7 +11,8 @@ import {
   orderBy,
   Timestamp,
 } from 'firebase/firestore';
-import { getDb } from './firebase';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { getDb, getStorageInstance } from './firebase';
 
 export interface Conocimiento {
   id?: string;
@@ -22,22 +23,6 @@ export interface Conocimiento {
   multimedia_ref: string;
   tags: string[];
 }
-
-const CATEGORIAS = [
-  'Programación',
-  'Diseño',
-  'Construcción',
-  'Carpintería',
-  'Plomería',
-  'Electricidad',
-  'Soldadura',
-  'Música',
-  'Política',
-  'Biotecnología',
-  'Otro',
-];
-
-export { CATEGORIAS };
 
 function getUserCollection(userId: string) {
   return collection(getDb(), 'users', userId, 'Memoria_Tecnica');
@@ -149,4 +134,14 @@ export async function importConocimientos(userId: string, jsonData: string) {
       fecha_actualizacion: Timestamp.now(),
     });
   }
+}
+
+export async function uploadMultimedia(userId: string, file: File): Promise<string> {
+  const storage = getStorageInstance();
+  const ext = file.name.split('.').pop();
+  const filename = `${Date.now()}_${Math.random().toString(36).substring(7)}.${ext}`;
+  const fileRef = ref(storage, `users/${userId}/multimedia/${filename}`);
+  
+  await uploadBytes(fileRef, file);
+  return await getDownloadURL(fileRef);
 }
