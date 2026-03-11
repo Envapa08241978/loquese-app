@@ -5,7 +5,7 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Cerebro — Tu Memoria Técnica Multipotencial',
+  title: 'LoQueSe.com — Tu Memoria Técnica',
   description:
     'Almacena, busca y consulta tus conocimientos técnicos con IA. Tu segundo cerebro para Programación, Diseño, Soldadura, Electricidad y más.',
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'Cerebro',
+    title: 'LoQueSe.com',
   },
   icons: {
     icon: '/icon-192.png',

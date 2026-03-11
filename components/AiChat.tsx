@@ -5,6 +5,7 @@ import { consultarIA } from '@/lib/ai';
 import { getAllConocimientos, Conocimiento } from '@/lib/db';
 import { useVoice } from '@/lib/voice';
 import ReactMarkdown from 'react-markdown';
+import Image from 'next/image';
 
 interface AiChatProps {
   userId: string;
@@ -73,8 +74,8 @@ export default function AiChat({ userId, isOpen, onClose }: AiChatProps) {
       {/* Header */}
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600">
-            <span className="text-lg">🧠</span>
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl shadow-sm">
+            <Image src="/icon-192.png" alt="LoQueSe.com" width={40} height={40} />
           </div>
           <div>
             <h2 className="font-semibold text-white">Asistente IA</h2>
@@ -95,7 +96,9 @@ export default function AiChat({ userId, isOpen, onClose }: AiChatProps) {
       <div className="flex-1 overflow-y-auto px-4 py-4">
         {messages.length === 0 && (
           <div className="flex h-full flex-col items-center justify-center text-center">
-            <div className="mb-4 text-6xl">🧠</div>
+            <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center overflow-hidden rounded-3xl shadow-2xl shadow-cyan-500/20">
+              <Image src="/icon-192.png" alt="LoQueSe.com" width={80} height={80} />
+            </div>
             <h3 className="mb-2 text-lg font-semibold text-white">
               ¿En qué puedo ayudarte?
             </h3>

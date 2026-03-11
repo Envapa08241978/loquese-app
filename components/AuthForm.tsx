@@ -6,6 +6,7 @@ import {
   loginWithEmail,
   loginWithGoogle,
 } from '@/lib/auth';
+import Image from 'next/image';
 
 interface AuthFormProps {
   onSuccess: () => void;
@@ -74,11 +75,17 @@ export default function AuthForm({ onSuccess }: AuthFormProps) {
     <div className="mx-auto w-full max-w-md px-6">
       {/* Logo */}
       <div className="mb-8 text-center">
-        <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-2xl shadow-cyan-500/25">
-          <span className="text-4xl">🧠</span>
+        <div className="mx-auto mb-4 flex h-24 w-24 items-center justify-center overflow-hidden rounded-3xl shadow-2xl shadow-cyan-500/25">
+          <Image
+            src="/icon-192.png"
+            alt="LoQueSe.com Logo"
+            width={96}
+            height={96}
+            className="h-full w-full object-cover"
+          />
         </div>
         <h1 className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-3xl font-bold text-transparent">
-          Cerebro
+          LoQueSe.com
         </h1>
         <p className="mt-2 text-sm text-gray-500">
           Tu memoria técnica multipotencial

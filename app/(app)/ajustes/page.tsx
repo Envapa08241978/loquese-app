@@ -185,7 +185,7 @@ export default function AjustesPage() {
 
       {/* Version */}
       <p className="text-center text-[10px] text-gray-600">
-        Cerebro v1.0.0 — Tu memoria técnica multipotencial
+        LoQueSe.com v1.0.0 — Tu memoria técnica multipotencial
       </p>
     </div>
   );

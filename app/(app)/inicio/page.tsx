@@ -10,6 +10,7 @@ import {
 import SearchBar from '@/components/SearchBar';
 import KnowledgeCard from '@/components/KnowledgeCard';
 import AiChat from '@/components/AiChat';
+import Image from 'next/image';
 
 export default function InicioPage() {
   const [user, setUser] = useState<User | null>(null);
@@ -71,8 +72,8 @@ export default function InicioPage() {
         className="group relative w-full overflow-hidden rounded-2xl border border-cyan-500/20 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 p-4 transition-all duration-300 hover:border-cyan-500/40 hover:shadow-lg hover:shadow-cyan-500/10"
       >
         <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 shadow-lg shadow-cyan-500/25 transition-transform duration-300 group-hover:scale-110">
-            <span className="text-2xl">🧠</span>
+          <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center overflow-hidden rounded-xl shadow-lg shadow-cyan-500/25 transition-transform duration-300 group-hover:scale-110">
+            <Image src="/icon-192.png" alt="LoQueSe IA" width={48} height={48} />
           </div>
           <div className="text-left">
             <p className="font-semibold text-white">Consultar a mi IA</p>
