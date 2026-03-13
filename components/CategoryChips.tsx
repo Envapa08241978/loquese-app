@@ -1,8 +1,7 @@
 'use client';
 
-import { CATEGORIAS } from '@/lib/db';
-
 interface CategoryChipsProps {
+  categories: string[];
   selected: string | null;
   onSelect: (category: string | null) => void;
 }
@@ -22,6 +21,7 @@ const categoryIcons: Record<string, string> = {
 };
 
 export default function CategoryChips({
+  categories,
   selected,
   onSelect,
 }: CategoryChipsProps) {
@@ -37,7 +37,7 @@ export default function CategoryChips({
       >
         Todas
       </button>
-      {CATEGORIAS.map((cat) => (
+      {categories.map((cat) => (
         <button
           key={cat}
           onClick={() => onSelect(cat)}

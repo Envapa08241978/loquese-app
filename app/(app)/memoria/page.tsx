@@ -18,6 +18,7 @@ export default function MemoriaPage() {
   const [user, setUser] = useState<User | null>(null);
   const [conocimientos, setConocimientos] = useState<Conocimiento[]>([]);
   const [filtered, setFiltered] = useState<Conocimiento[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -27,6 +28,21 @@ export default function MemoriaPage() {
     const unsub = onAuthChange((u) => setUser(u));
     return () => unsub();
   }, []);
+
+  const fetchAllCategories = useCallback(async () => {
+    if (!user) return;
+    try {
+      const allDocs = await getAllConocimientos(user.uid);
+      const uniqueCats = Array.from(new Set(allDocs.map((c) => c.habilidad)));
+      setCategories(uniqueCats);
+    } catch {
+      // ignore
+    }
+  }, [user]);
+
+  useEffect(() => {
+    fetchAllCategories();
+  }, [fetchAllCategories]);
 
   const fetchData = useCallback(async () => {
     if (!user) return;
@@ -83,7 +99,7 @@ export default function MemoriaPage() {
         placeholder="Buscar conocimientos..."
       />
 
-      <CategoryChips selected={category} onSelect={setCategory} />
+      <CategoryChips categories={categories} selected={category} onSelect={setCategory} />
 
       {loading ? (
         <div className="flex justify-center py-12">
