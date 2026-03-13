@@ -70,7 +70,7 @@ export default function AiChat({ userId, isOpen, onClose }: AiChatProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-[#0a0a0f]/95 backdrop-blur-xl">
+    <div className="fixed inset-0 z-[100] flex flex-col bg-[#0a0a0f]/95 backdrop-blur-xl">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-white/10 px-4 py-4">
         <div className="flex items-center gap-3">
